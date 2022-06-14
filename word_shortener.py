@@ -1,3 +1,6 @@
+from hashlib import new
+
+
 class Node(object):
   """Node in a linked list."""
 
@@ -32,6 +35,14 @@ class LinkedList(object):
             self.tail.next = new_node
 
         self.tail = new_node
+
+    def __len__(self):
+        length = 0
+        current_node = self.head
+        while current_node != None:
+            current_node = current_node.next
+            length += 1
+        return length
 
     def print_list(self):
         """Print all items in the list."""
@@ -81,5 +92,20 @@ class LinkedList(object):
                 current = current.next
 
 
-def shorten_word(list_of_words):
-    pass
+
+def word_shorten(list_of_words):
+    shorter_list = list_of_words[1:]
+
+    new_linked_list = LinkedList()
+
+    for item in shorter_list:
+        new_linked_list.append(item)
+    
+    return new_linked_list
+        
+
+kh_characters = ["Sora", "Riku", "Kairi", "Donald", "Goofy", "Sid"]
+
+
+print(len(word_shorten(kh_characters)))
+# print(len(LinkedList()))
